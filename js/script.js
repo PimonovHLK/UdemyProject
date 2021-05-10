@@ -1,9 +1,23 @@
 "use strict";
 
-const arr = [2, 3, 48, 5, 8];
-arr.sort(compareNum);
-console.log(arr);
+let str = "some";
+let strObj = new String(str);
 
-function compareNum(a, b){
-    return a - b;
-}
+console.log(typeof(str));
+console.log(typeof(strObj));
+
+console.dir([1,2,3]);
+
+const soldier = {
+    health: 400,
+    armor: 100,
+    sayHello: function() {
+        console.log("Hello");
+    }
+};
+
+const jonh = Object.create(soldier);
+
+Object.setPrototypeOf(jonh, soldier);
+
+jonh.sayHello();
