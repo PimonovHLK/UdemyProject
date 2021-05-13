@@ -1,33 +1,25 @@
 "use strict";
 
-// динамическа типизация
-// 1)
-console.log(String(null));
-console.log(String(4));
-// 2)
-console.log(typeof(null + ''));
-const num = 5;
-console.log("https://vk.com/catalog/" + num);
 
-const fontsize = 26 + 'px';
+// alert( x++ );
+// console.log([ ] + false - null + true);
+// let y = 1;
+// let x = y = 2;
+// console.log([] + 1 + 2);
 
-// 3) to Number
+// alert("1"[0]);
+// console.log(2 && 1 && null && 0 && undefined);
+// и запинается на лжи
+// или запинается на правде
 
-console.log(typeof(+'5'));
-console.log(typeof(parseInt("15px", 10)));
+// console.log(!!( 1 && 2) == (1 && 2));
 
-let answ = +prompt("Hello", "");
+// console.log(null || 2 && 3 || 4);
 
-// to boolean
+// const a = [1, 2, 3];
+// const b = [1, 2, 3];
+// console.log(a == b);
 
-// 0, '', null, undefined, NaN;
-
-let switcher = null;
-switcher = 1;
-if (switcher) {
-    console.log('Working....');
-}
-// 2 способ преобразования
-
-console.log(typeof(Boolean('4')));
-console.log(typeof(!!"4444"));
+// alert ( +"Infinity");
+// console.log("Ежик" > "яблоко");
+console.log(0 || ""|| 2 || undefined || true || falsе);
