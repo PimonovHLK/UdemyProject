@@ -1,23 +1,26 @@
 "use strict";
+window.addEventListener('DOMContentLoaded', () => {
+    const box = document.querySelector('.box');
+    box.addEventListener('touchstart', (e) => {
+        e.preventDefault();
 
-let str = "some";
-let strObj = new String(str);
+        console.log('Start');
+        console.log(e.changedTouches);
+    });
 
-console.log(typeof(str));
-console.log(typeof(strObj));
+    // box.addEventListener('touchmove', (e) => {
+    //     e.preventDefault();
 
-console.dir([1,2,3]);
+    //     console.log('Move');
+    // });
 
-const soldier = {
-    health: 400,
-    armor: 100,
-    sayHello: function() {
-        console.log("Hello");
-    }
-};
+    // box.addEventListener('touchend', (e) => {
+    //     e.preventDefault();
 
-const jonh = Object.create(soldier);
+    //     console.log('End');
+    // });
 
-Object.setPrototypeOf(jonh, soldier);
-
-jonh.sayHello();
+    // touches
+    // targetTouches
+    // changedTouches
+});
