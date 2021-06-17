@@ -1,52 +1,45 @@
 "use strict";
-// Lesson 29 Действия с элементами на странице
+// Lesson 37 
 
-const box = document.getElementById('box'),
-btns = document.getElementsByTagName('button'),
-circles = document.getElementsByClassName('circle'),
-wrapper = document.querySelector('.wrapper'),
-hearts = wrapper.querySelectorAll('.heart'),
-oneHeart = wrapper.querySelector('div');
+const btns = document.querySelectorAll('button'),
+    wrapper = document.querySelector('.btn-block');
 
 
-box.style.backgroundColor  = 'blue';
-box.style.width = '500px';
+//console.log(btns[0].classList.length);
+// console.log(btns[0].classList.item(1));
+// console.log(btns[1].classList.add('red'));
+// console.log(btns[0].classList.remove('blue'));
+// console.log(btns[0].classList.toggle('blue'));
 
-box.style.cssText = 'backround-color; blue; width: 500px';
-
-btns[1].style.borderRadius = '100%';
-circles[0].style.backgroundColor = 'red';
-
-// for (let i = 0; i < hearts.length; i++) {
-//     hearts[i].style.backgroundColor = 'blue';
+// if(btns[1].classList.contains('red')) {
+//     console.log('reddd');
 // }
 
-hearts.forEach(item => {
-    item.style.backgroundColor = 'blue';
+btns[0].addEventListener('click', () => {
+    // if (!btns[1].classList.contains('red'))
+    // {
+    //     btns[1].classList.add('red');
+    // } else {
+    //     btns[1].classList.remove('red');
+    // }
+
+    btns[1].classList.toggle('red');
 });
 
-const div = document.createElement('div');
-// const text = document.createTextNode('тут был я');
+// console.log(btns[0].className);
 
-div.classList.add('black');
+wrapper.addEventListener('click', (event) => {
+    if( event.target && event.target.matches("button.red")) {
+        console.log('Hello');
+    }
+});
 
-wrapper.append(div);
-// wrapper.appendChild(div);
+// btns.forEach(btn => {
+//     btn.addEventListener('click', () => {
+//         console.log('Hello');
+//     });
+// });
 
-// wrapper.prepend(div);
-
-// hearts[0].after(div);
-// hearts[0].before(div);
-
-// wrapper.insertBefore(div, hearts[1]);
-
-// circles[0].remove();
-wrapper.removeChild(hearts[1]);
-
-// hearts[0].replaceWith(circles[0]);
-// wrapper.replaceChild(circles[0], hearts[0]);
-
-div.innerHTML ="<h1>Hello world</h1>";
-// div.textContent = "Hello";
-
-div.insertAdjacentHTML("afterend", '<h2>Alyarm</h2>')
+const btn = document.createElement('button');
+btn.classList.add('red');
+wrapper.append(btn);
