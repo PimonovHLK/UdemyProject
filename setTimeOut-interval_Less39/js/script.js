@@ -1,34 +1,28 @@
-const btn = document.querySelector('.btn');
-let timeId,
-    i = 0;
+'use strict';
 
-    function myAnimation() {
-        const elem = document.querySelector('.box');
-        let pos = 0;
-        const id = setInterval(frame, 10);
+const now = new Date('2020-05-01');
+// new Date.parse('2020-05-01');
 
-        function frame() {
-            if (pos == 300) {
-                clearInterval(id);
-            }   else {
-                pos++;
-                elem.style.top = pos + "px";
-                elem.style.left = pos + "px";
-            }
-        }
-    }
+// console.log(now.getFullYear());
+// console.log(now.getMonth());
+// console.log(now.getDate());
 
-btn.addEventListener('click', myAnimation )
+// console.log(now.getDay());
+// console.log(now.getHours());
+// console.log(now.getUTCHours());
 
-// function logger () {
-//     if (i === 3) {
-//         clearInterval(timeId);
-//     }
-//     console.log('text');
-//     i++;
-// }
+// console.log(now.getTimezoneOffset());
+// console.log(now.getTime());
 
-// const id = setTimeout (function log(){
-//     console.log('Hello');
-//     id = setTimeout(log, 500);
-// }, 500);
+// console.log(now.setHours(55));
+// console.log(now);
+
+let start = new Date();
+
+for(let i = 0; i< 100000; i++) {
+    let some = i ** 3;
+}
+
+let end = new Date();
+
+alert(`Цикл отработал ${end - start} милесекунд`);
