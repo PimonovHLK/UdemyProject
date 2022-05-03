@@ -7,11 +7,7 @@ import './randomChar.scss';
 import mjolnir from '../../resources/img/mjolnir.png';
 
 class RandomChar extends Component {
-    constructor(props) {
-        super(props);
-        this.updateChar();
-    }
-
+    
     state = {
         char: {},
         loading: true,
@@ -20,9 +16,21 @@ class RandomChar extends Component {
 
     marvelService = new MarvelService();
 
-    onCharLoaded = (char) => {
-        this.setState({char, loading: false})
+    componentDidMount() {
+        this.updateChar();
+        // this.timerId = setInterval(this.updateChar, 3000);
+        
     }
+
+    componentWillUnmount() {        
+        // clearInterval(this.timerId);
+    }
+
+    onCharLoading() {
+        this.setState({
+            loading: true
+        })
+    }   
 
     onError = () => {
         this.setState({
@@ -30,22 +38,26 @@ class RandomChar extends Component {
             error: true
         })
     }
+    
+    onCharLoaded = (char) => {        
+        this.setState({char, loading: false})
+    }
 
     updateChar = () => {
         const id = Math.floor(Math.random() * (1011400-1011000) + 1011000);
+        this.onCharLoading()
         this.marvelService 
             .getCharacter(id)
             .then(this.onCharLoaded)
             .catch(this.onError)        
     } 
     
-    render() {
+    render() {        
         const {char, loading, error} = this.state;
         
         const errorMessage = error ? <ErrorMessage/> : null;
         const spinner = loading ? <Spinner/>: null;
-        const content = !(loading || error) ? <View char={char}/> : null;
-        
+        const content = !(loading || error) ? <View char={char}/> : null;        
 
         return (
             <div className="randomchar">       
@@ -60,7 +72,7 @@ class RandomChar extends Component {
                     <p className="randomchar__title">
                         Or choose another one
                     </p>
-                    <button className="button button__main">
+                    <button onClick={this.updateChar} className="button button__main">
                         <div className="inner">try it</div>
                     </button>
                     <img src={mjolnir} alt="mjolnir" className="randomchar__decoration"/>
@@ -72,9 +84,12 @@ class RandomChar extends Component {
 
 const View = ({char}) => {
     const {name, description, thumbnail, homepage, wiki} = char;
+    const thumbnailNotEmpty = thumbnail.indexOf('image_not_available', 0) !== -1;
+        
+    console.log(thumbnailNotEmpty);
     return (
         <div className="randomchar__block">
-            <img src={thumbnail} alt="Random character" className="randomchar__img"/>
+            <img src={thumbnail} alt="Random character" className={`randomchar__img ${thumbnailNotEmpty ? "contain" : ""}`}/>
             <div className="randomchar__info">
                 <p className="randomchar__name">{name}</p>
                 <p className="randomchar__descr">{description}</p>
