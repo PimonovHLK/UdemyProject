@@ -101,9 +101,49 @@ const HelloGreating = () => {
     )
 }
 
+const Message = (props) => {
+    return (
+        <h2>
+            The counter is {props.counter}
+        </h2>
+    )
+}
+
+class Counter extends Component {
+    state = {
+        counter: 0
+    }
+
+    ChangeCounter = () => {
+        this.setState(({counter}) => ({
+            counter: counter + 1
+        }))
+    }
+    render () {
+        return(
+            <>
+                <button
+                    className={'btn btn-primary'}
+                    onClick={this.ChangeCounter}>
+                    Click me
+                </button>
+                {this.props.render(this.state.counter)}
+                {this.props.render(this.state.counter)}
+            </>
+        )
+    }
+}
+
+
+
 function App() {
   return (
     <Wrapper>
+
+        <Counter render={counter => (
+            <Message counter={counter}/>
+        )}/>
+
         <HelloGreating/>
         <BootstrapTest
             left = {
