@@ -14,14 +14,14 @@ const CharList = (props) => {
     const [offset, setOffset] = useState(210);
     const [charEnded, setCharEnded] = useState(false);
     
-    const {loading, error, getAllCharacters}=  useMarvelService();
+    const {loading, error, getAllCharacters} =  useMarvelService();
 
     useEffect(() => {
         onRequest(offset, true);
     }, [])
     
     const onRequest = (offset, initial) => {
-        initial ? setNewItemLoading(false) :  setNewItemLoading(false);       
+        initial ? setNewItemLoading(false) :  setNewItemLoading(true);       
         getAllCharacters(offset)
         .then(onCharListLoaded)        
     }
@@ -83,9 +83,7 @@ const CharList = (props) => {
 
     const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading && !newItemLoading ? <Spinner/>: null;    
-
-    console.log({newItemLoading});
-
+    
     return (
         <div className="char__list">
             {errorMessage}
