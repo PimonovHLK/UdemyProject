@@ -26,7 +26,8 @@ const CharList = (props) => {
         .then(onCharListLoaded)        
     }
    
-    const onCharListLoaded = (newcharList) => {          
+    const onCharListLoaded = (newcharList) => {     
+                
         let ended = false;
         if(newcharList.length < 9) {
             ended = true;
@@ -83,7 +84,7 @@ const CharList = (props) => {
 
     const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading && !newItemLoading ? <Spinner/>: null;    
-    
+      
     return (
         <div className="char__list">
             {errorMessage}
