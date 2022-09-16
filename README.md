@@ -3,7 +3,7 @@
 
 Этот репозиторий состоит из материалов учебного курса JavaScript и React. 
 
-В ветке master папка marvel/starter проект на React.
+В ветке master папка marvel_starter проект на React.
 
 запуск проекта.
 
